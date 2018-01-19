@@ -71,7 +71,7 @@ public class Purse {
 	 * @return true if purse is full.
 	 */
 	public boolean isFull() {
-		if (getCapacity() < count()) {
+		if (getCapacity() <= count()) {
 			return true;
 		}
 		return false;
