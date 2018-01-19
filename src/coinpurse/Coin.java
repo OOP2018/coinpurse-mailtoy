@@ -25,10 +25,20 @@ public class Coin implements Comparable<Coin> {
 		this.currency = currency;
 	}
 	
+	/**
+	 * Return the value of the money.
+	 * 
+	 * @return the value.
+	 */
 	public double getValue(){
 		return this.value;
 	}
 	
+	/**
+	 * Return the currency of the money.
+	 * 
+	 * @return the currency.
+	 */
 	public String getCurrency(){
 		return this.currency;
 	}
@@ -50,10 +60,22 @@ public class Coin implements Comparable<Coin> {
 		
 	}
 	
+	/**
+	 * Order values by values 
+	 * @return < 0 when this value is less than other value,
+	 *         = 0 when this value equals other value and
+	 *         > 0 when this value is more than other value.
+	 */
 	public int compareTo(Coin coin){
-		return (int)Math.signum(this.getValue() - coin.getValue());
+		return -1*(int)Math.signum(this.getValue() - coin.getValue());
 	}
 	
+	/**
+	 * Return a string representation of this Coin
+	 * 
+	 * @return string that describes the coin
+	 * 
+	 */
 	public String toString(){
 		return this.value + "-" + this.currency;
 	}
@@ -62,17 +84,5 @@ public class Coin implements Comparable<Coin> {
 		System.out.println(coins);
 	}
 	
-	public static void main (String[] arg){
-		// Don't just copy this code. Write your own test code.
-		List<Coin> coins = new ArrayList<Coin>( );
-		coins.add( new Coin(10.0, "Baht") );
-		coins.add( new Coin(0.5, "Baht") );
-		coins.add( new Coin(2.0, "Baht") ); // the most hated coin
-		coins.add( new Coin(1.0, "Baht") );
-		printCoins( coins ); 
-		// This static method sorts any list of Comparable objects
-		java.util.Collections.sort( coins );
-		printCoins( coins ); // the coins should be sorted by value now
-	}
 
 }
