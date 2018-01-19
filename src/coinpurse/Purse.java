@@ -1,5 +1,8 @@
 package coinpurse;
- 
+
+import java.util.ArrayList;
+import java.util.List;
+
 //TODO import List, ArrayList, and Collections
 // You will use Collections.sort() to sort the coins
 
@@ -12,7 +15,7 @@ package coinpurse;
  */
 public class Purse {
     /** Collection of objects in the purse. */
-    //TODO declare a List of Coins named "money".
+	List<Coin> money = new ArrayList<Coin>( );
     
     /** Capacity is maximum number of items the purse can hold.
      *  Capacity is set when the purse is created and cannot be changed.
@@ -24,6 +27,8 @@ public class Purse {
      *  @param capacity is maximum number of coins you can put in purse.
      */
     public Purse( int capacity ) {
+    	this.capacity = capacity;
+    	this.money = money;
 
     }
 
@@ -32,14 +37,21 @@ public class Purse {
      * This is the number of coins, not their value.
      * @return the number of coins in the purse
      */
-    public int count() { return 0; }
+    public int count() { 
+    	return money.size(); 
+    	}
     
     /** 
      *  Get the total value of all items in the purse.
      *  @return the total value of items in the purse.
      */
     public double getBalance() {
-		return 0.0; 
+    	double balance = 0;
+    	for(Coin coin : this.money){
+    		balance += coin.getValue();
+    	}
+    	
+		return balance; 
 	}
 
     
@@ -47,9 +59,8 @@ public class Purse {
      * Return the capacity of the coin purse.
      * @return the capacity
      */
-    //TODO write accessor method for capacity. Use Java naming convention.
     public int getCapacity() { 
-		return 0; 
+		return this.capacity; 
 	}
     
     /** 
@@ -59,7 +70,9 @@ public class Purse {
      *  @return true if purse is full.
      */
     public boolean isFull() {
-        //TODO complete this method. Avoid writing duplicate code (Don't Repeat Yourself).
+       if(getCapacity() < count()){
+    	   return true;
+       }
         return false;
     }
 
@@ -71,8 +84,12 @@ public class Purse {
      * @return true if coin inserted, false if can't insert
      */
     public boolean insert( Coin coin ) {
-        // if the purse is already full then can't insert anything.
-        //TODO complete the insert method
+    	if(coin.getValue() <= 0){
+    		return false;
+    	} else if(!isFull()){
+    		money.add(coin);
+    		return true;
+    	}
         return false;
     }
     
