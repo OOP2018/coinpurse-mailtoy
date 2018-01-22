@@ -68,7 +68,7 @@ public class Coin implements Comparable<Coin> {
 	 *         > 0 when this value is more than other value.
 	 */
 	public int compareTo(Coin coin){
-		return -1*(int)Math.signum(this.getValue() - coin.getValue());
+		return (int)Math.signum(this.getValue() - coin.getValue());
 		
 	}
 	

@@ -113,6 +113,7 @@ public class Purse {
 			return null;
 
 		MoneyUtil.sortCoins(money);
+		Collections.reverse(money);
 		List<Coin> withdraw = new ArrayList<>();
 		for (int i = 0; i < money.size(); i++) {
 			if (money.get(i).getValue() <= amount) {
