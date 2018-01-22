@@ -82,16 +82,5 @@ public class Coin implements Comparable<Coin> {
 		return String.format("%.2f-%s", value, currency);
 	}
 	
-	public static void main (String[]arg){
-		// Don't just copy this code. Write your own test code.
-		List<Coin> coins = new ArrayList<Coin>( );
-		coins.add( new Coin(10.0, "Baht") );
-		coins.add( new Coin(0.5, "Baht") );
-		coins.add( new Coin(2.0, "Baht") ); // the most hated coin
-		coins.add( new Coin(1.0, "Baht") );
-		System.out.println(new Coin(5.0,"B").compareTo(new Coin(0.2,"B")));
-	}
-	
-	
 
 }
