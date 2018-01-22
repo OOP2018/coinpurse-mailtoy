@@ -1,8 +1,5 @@
 package coinpurse;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Coin represents coinage (money) with a fixed value and currency.
  * @author Kanchanok Kannee
@@ -80,13 +77,6 @@ public class Coin implements Comparable<Coin> {
 		return this.value + "-" + this.currency;
 	}
 	
-	/**
-	 * Print the coin value.
-	 * @param coins is value of the money.
-	 */
-	public static void printCoins(List<Coin> coins){
-		System.out.println(coins);
-	}
 	
 
 }

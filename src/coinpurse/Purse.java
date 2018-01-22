@@ -27,7 +27,7 @@ public class Purse {
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
-		this.money = money;
+		
 
 	}
 
@@ -71,7 +71,7 @@ public class Purse {
 	 * @return true if purse is full.
 	 */
 	public boolean isFull() {
-		if (getCapacity() <= count()) {
+		if (this.getCapacity() == this.count()) {
 			return true;
 		}
 		return false;
@@ -86,9 +86,9 @@ public class Purse {
 	 * @return true if coin inserted, false if can't insert
 	 */
 	public boolean insert(Coin coin) {
-		if (coin.getValue() <= 0) {
+		if (this.isFull())
 			return false;
-		} else if (!isFull()) {
+		if (coin.getValue() > 0) {
 			money.add(coin);
 			return true;
 		}
@@ -111,6 +111,7 @@ public class Purse {
 		if (amount > this.getBalance())
 			return null;
 
+		MoneyUtil.sortCoins(money);
 		List<Coin> withdraw = new ArrayList<>();
 		for (int i = 0; i < money.size(); i++) {
 			if (money.get(i).getValue() <= amount) {
