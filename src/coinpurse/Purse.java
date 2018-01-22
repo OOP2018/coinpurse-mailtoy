@@ -1,6 +1,7 @@
 package coinpurse;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -133,13 +134,12 @@ public class Purse {
 		return arrayWithdraw;
 
 	}
-
 	/**
 	 * toString returns a string description of the purse contents. It can
 	 * return whatever is a useful description.
 	 */
 	public String toString() {
-		return this.money.size() + " coins with value " + this.getBalance();
+		return String.format("%d coins with value %.2f", money.size(), getBalance());
 	}
 
 }
