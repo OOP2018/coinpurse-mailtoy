@@ -1,5 +1,6 @@
 package coinpurse;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 /**
@@ -17,10 +18,10 @@ public class MoneyUtil {
 	 * @return a new List containing only the elements from coin that have
 	 *         the requested currency.
 	 */
-	static List<Coin> filterByCurrency(List<Coin> coins, String currency){
-		List<Coin> sameCurrencyCoin = null;
+	public static List<Coin> filterByCurrency(List<Coin> coins, String currency){
+		List<Coin> sameCurrencyCoin =  new ArrayList<>();;
 		for(Coin coin : coins){
-			if(coin.getCurrency().contains(currency)){
+			if(currency.equals(coin.getCurrency())){
 				sameCurrencyCoin.add(coin);
 			}
 		}
@@ -33,7 +34,7 @@ public class MoneyUtil {
 	 * @param value is a List of Coin we want to sort.
 	 * 
 	 */
-	static void sortCoins(List<Coin> coins) {
+	public static void sortCoins(List<Coin> coins) {
 		Collections.sort(coins);
 	}
 
