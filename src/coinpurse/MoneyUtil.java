@@ -37,5 +37,24 @@ public class MoneyUtil {
 	public static void sortCoins(List<Coin> coins) {
 		Collections.sort(coins);
 	}
+	
+	/**
+     * To test filterByCurrency and sortCoins method.
+     * @param args not used
+     */
+	public static void main(String[] args) {
+		List<Coin> coins = new ArrayList<>();
+
+        coins.add(new Coin(0.5, "Baht"));
+        coins.add(new Coin(1.0, "Baht"));
+        coins.add(new Coin(0.25, "Baht"));
+        coins.add(new Coin(5.0, "Baht"));
+
+        sortCoins(coins);
+        List<Coin> filteredList = filterByCurrency(coins, "Baht");
+        for (Coin coin : filteredList){
+        	System.out.print(coin.toString() + " ");
+        }
+	}
 
 }
