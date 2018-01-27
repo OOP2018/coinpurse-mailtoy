@@ -14,7 +14,7 @@ public class MoneyUtil {
 	 * Method that examines all coin in a List and returns only the value
 	 * that have a currency that matches the parameter value.
 	 * 
-	 * @param coin is a List of Coin objects. This list is not modified.
+	 * @param coin is a List of Valuable objects. This list is not modified.
 	 * @param currency is the currency we want. Must not be null.
 	 * @return a new List containing only the elements from coin that have
 	 *         the requested currency.
@@ -32,7 +32,7 @@ public class MoneyUtil {
 	/**
 	 * Method to sort a list of value.(minimun value come first)
 	 * 
-	 * @param value is a List of Coin we want to sort.
+	 * @param value is a List of Valuable we want to sort.
 	 * 
 	 */
 	public static void sortCoins(List<Valuable> coins) {
@@ -50,6 +50,17 @@ public class MoneyUtil {
 	}
 	
 	/**
+	 * Print value in purse
+	 * 
+	 * @param value of Valuable
+	 */
+	public static void printList(List<Valuable> values) {
+		for(Valuable v: values) {
+			System.out.print(v.toString() + " ");
+		}
+	}
+	
+	/**
      * To test filterByCurrency and sortCoins method.
      * @param args not used
      */
@@ -63,9 +74,10 @@ public class MoneyUtil {
 
         sortCoins(coins);
         List<Valuable> filteredList = filterByCurrency(coins, "Baht");
-        for (Valuable val : filteredList){
-        	System.out.print(val.toString() + " ");
-        }
+//        for (Valuable val : filteredList){
+//        	System.out.print(val.toString() + " ");
+//        }
+        printList(filteredList);
 	}
 
 }
