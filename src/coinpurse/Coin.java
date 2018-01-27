@@ -8,7 +8,7 @@ import java.util.List;
  * @author Kanchanok Kannee
  *
  */
-public class Coin implements Comparable<Coin> {
+public class Coin implements Comparable<Coin>,Valuable {
 	double value;
 	String currency;
 	
