@@ -1,7 +1,7 @@
 package coinpurse;
 
 /**
- * 
+ * Banknote represents money with a value, currency and  has a different serial number.
  * @author Kanchanok Kannee
  *
  */
