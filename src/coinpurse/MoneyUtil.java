@@ -74,9 +74,6 @@ public class MoneyUtil {
 
         sortCoins(coins);
         List<Valuable> filteredList = filterByCurrency(coins, "Baht");
-//        for (Valuable val : filteredList){
-//        	System.out.print(val.toString() + " ");
-//        }
         printList(filteredList);
 	}
 
