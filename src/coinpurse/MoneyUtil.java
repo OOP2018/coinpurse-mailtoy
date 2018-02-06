@@ -20,7 +20,7 @@ public class MoneyUtil {
 	 *         the requested currency.
 	 */
 	public static List<Valuable> filterByCurrency(List<Valuable> vals, String currency){
-		List<Valuable> sameCurrencyValue =  new ArrayList<>();;
+		List<Valuable> sameCurrencyValue =  new ArrayList<Valuable>();
 		for(Valuable val : vals){
 			if(currency.equals(val.getCurrency())){
 				sameCurrencyValue.add(val);

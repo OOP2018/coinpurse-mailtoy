@@ -31,8 +31,25 @@ public class BankNote implements Valuable {
 	 * 
 	 * @return the serialnumber.
 	 */
-	public long getSerialNumber() {
+	public long getSerial() {
 		return this.serialNumber;
+	}
+	
+	/**
+	 * Checks an object equal or not.
+	 * 
+	 * @param arg is the object compare with
+	 * @return true if equal, false otherwise
+	 */
+	public boolean equals(Object arg) {
+		if (arg == null)
+			return false;
+		if (arg.getClass() != this.getClass())
+			return false;
+		BankNote other = (BankNote) arg;
+		if (this.value == other.getValue() && this.currency == other.getCurrency())
+			return true;
+		return false;
 	}
 	
 	/**
