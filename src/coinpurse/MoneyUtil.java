@@ -30,7 +30,7 @@ public class MoneyUtil {
 	}
 	
 	/**
-	 * Method to sort a list of value.(minimun value come first)
+	 * Method to sort a list of value.(minimum value come first)
 	 * 
 	 * @param value is a List of Valuable we want to sort.
 	 * 
