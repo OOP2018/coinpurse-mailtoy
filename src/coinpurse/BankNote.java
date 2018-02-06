@@ -36,10 +36,12 @@ public class BankNote implements Valuable {
 	}
 	
 	/**
-	 * Checks an object equal or not.
+	 * Compare two BankNote by value and currency. They are equal if the value and
+	 * currency matches.
 	 * 
-	 * @param arg is the object compare with
-	 * @return true if equal, false otherwise
+	 * @param arg is another Object to compare to this one.
+	 * @return true if the value is same and the currency is same, false
+	 *         otherwise.
 	 */
 	public boolean equals(Object arg) {
 		if (arg == null)
