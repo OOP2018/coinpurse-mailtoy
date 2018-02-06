@@ -14,7 +14,7 @@ public class MoneyUtil {
 	 * Method that examines all coin in a List and returns only the value
 	 * that have a currency that matches the parameter value.
 	 * 
-	 * @param coin is a List of Valuable objects. This list is not modified.
+	 * @param vals is a List of Valuable objects. This list is not modified.
 	 * @param currency is the currency we want. Must not be null.
 	 * @return a new List containing only the elements from coin that have
 	 *         the requested currency.
@@ -35,8 +35,8 @@ public class MoneyUtil {
 	 * @param value is a List of Valuable we want to sort.
 	 * 
 	 */
-	public static void sortCoins(List<Valuable> coins) {
-		Collections.sort(coins, new Comparator<Valuable>() {
+	public static void sortCoins(List<Valuable> value) {
+		Collections.sort(value, new Comparator<Valuable>() {
 
 			@Override
 			public int compare(Valuable o1, Valuable o2) {
@@ -50,9 +50,9 @@ public class MoneyUtil {
 	}
 	
 	/**
-	 * Print value in purse
+	 * Print values in purse
 	 * 
-	 * @param value of Valuable
+	 * @param values of Valuable
 	 */
 	public static void printList(List<Valuable> values) {
 		for(Valuable v: values) {
