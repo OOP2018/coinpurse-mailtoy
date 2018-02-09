@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * A coin purse contains coins. You can insert coins, withdraw money, check the
+ * A coin purse contains value. You can insert value, withdraw money, check the
  * balance, and check if the purse is full.
  * 
  * @author Kanchanok Kannee
@@ -26,7 +26,7 @@ public class Purse {
 	 * Create a purse with a specified capacity.
 	 * 
 	 * @param capacity
-	 *            is maximum number of coins you can put in purse.
+	 *            is maximum number of values you can put in purse.
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
@@ -36,10 +36,10 @@ public class Purse {
 	}
 
 	/**
-	 * Count and return the number of coins in the purse. This is the number of
-	 * coins, not their value.
+	 * Count and return the number of values in the purse. This is the number of
+	 * values, not their value.
 	 * 
-	 * @return the number of coins in the purse
+	 * @return the number of values in the purse
 	 */
 	public int count() {
 		return money.size();
@@ -52,10 +52,9 @@ public class Purse {
 	 */
 	public double getBalance() {
 		double balance = 0;
-		for (Valuable coin : this.money) {
-			balance += coin.getValue();
+		for (Valuable value : this.money) {
+			balance += value.getValue();
 		}
-
 		return balance;
 	}
 
@@ -82,25 +81,52 @@ public class Purse {
 	}
 
 	/**
-	 * Insert a coin into the purse. The coin is only inserted if the purse has
-	 * space for it and the coin has positive value. No worthless coins!
+	 * Insert a value into the purse. The value is only inserted if the purse has
+	 * space for it and the value has positive value. No worthless values!
 	 * 
-	 * @param coin
-	 *            is a Coin object to insert into purse
-	 * @return true if coin inserted, false if can't insert
+	 * @param value is a Valuable object to insert into purse
+	 * @return true if value inserted, false if can't insert
 	 */
-	public boolean insert(Valuable coin) {
+	public boolean insert(Valuable value) {
 		if (this.isFull())
 			return false;
-		if (coin.getValue() > 0) {
-			money.add(coin);
+		if (value.getValue() > 0) {
+			money.add(value);
 			return true;
 		}
 		return false;
 	}
+	
+	public Valuable[] withdraw(Valuable amount){
+		Comparator<Valuable> comp = new ValueComparator();
+		if(this.getBalance() < 0.0)
+			return null;
+		if (amount.getValue() < 0)
+			return null;
+		if (amount.getValue() > this.getBalance())
+			return null;
+		double amountValue = amount.getValue();
+		Collections.sort(money, comp);
+		Collections.reverse(money);
+		List<Valuable> withdraw = new ArrayList<>();
+		for (int i = 0; i < money.size(); i++) {
+			if (money.get(i).getValue() <= amountValue && money.get(i).getCurrency().equals(amount.getCurrency())) {
+				withdraw.add(money.get(i));
+				amountValue -= money.get(i).getValue();
+			}
+		}
+		if (amountValue != 0)
+			return null;
+		for (Valuable coinNeedToWithdraw : withdraw) {
+				money.remove(coinNeedToWithdraw);
+			}
+		Valuable[] arrayWithdraw = new Valuable[withdraw.size()];
+		withdraw.toArray(arrayWithdraw);
+		return arrayWithdraw;
+	}
 
 	/**
-	 * Withdraw the requested amount of money. Return an array of Value
+	 * Withdraw the requested amount of money. Return an array of Valuable
 	 * withdrawn from purse, or return null if cannot withdraw the amount
 	 * requested.
 	 * 
@@ -110,6 +136,8 @@ public class Purse {
 	 */
 	public Valuable[] withdraw(double amount) {
 		Comparator<Valuable> comp = new ValueComparator();
+		if(this.getBalance() < 0.0)
+			return null;
 		if (amount < 0)
 			return null;
 		if (amount > this.getBalance())
@@ -124,25 +152,33 @@ public class Purse {
 				amount -= money.get(i).getValue();
 			}
 		}
-
 		if (amount != 0)
 			return null;
-		
 		for (Valuable coinNeedToWithdraw : withdraw) {
 				money.remove(coinNeedToWithdraw);
 			}
-		
 		Valuable[] arrayWithdraw = new Valuable[withdraw.size()];
 		withdraw.toArray(arrayWithdraw);
 		return arrayWithdraw;
-
 	}
+
 	/**
 	 * toString returns a string description of the purse contents. It can
 	 * return whatever is a useful description.
 	 */
 	public String toString() {
-		return String.format("%d coins with value %.2f", money.size(), getBalance());
+		return String.format("%d items with value %.2f", money.size(), getBalance());
+	}
+	
+	public static void main(String[] args) {
+		Purse aPurse = new Purse(10);
+		aPurse.insert(new BankNote(20, "b"));
+		aPurse.insert(new BankNote(20, "p"));
+		aPurse.insert(new Coin(10, "b"));
+		aPurse.withdraw(new BankNote(20, "p"));
+		System.out.println(aPurse);
+		
+		
 	}
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
  * @author Kanchanok Kannee
  *
  */
-public class Coin extends Money implements Comparable<Coin> {
+public class Coin extends Money {
 	/**
 	 * A coin with given value and currency.
 	 * 
@@ -19,17 +19,6 @@ public class Coin extends Money implements Comparable<Coin> {
 	 */
 	public Coin(double value, String currency){
 		super(value,currency);
-	}
-	
-	/**
-	 * Order values by values 
-	 * @return < 0 when this value is less than other value,
-	 *         = 0 when this value equals other value and
-	 *         > 0 when this value is more than other value.
-	 */
-	public int compareTo(Coin coin){
-		return (int)Math.signum(this.getValue() - coin.getValue());
-		
 	}
 	
 	/**

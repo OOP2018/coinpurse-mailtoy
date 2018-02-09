@@ -1,20 +1,24 @@
 package coinpurse;
 
 /**
- * Superclass for Coin and BankNote eliminate duplicate code that implements Valuable
+ * Superclass for Coin and BankNote eliminate duplicate code that implements
+ * Valuable
+ * 
  * @author Kanchanok Kannee
  *
  */
-public class Money implements Valuable{
+public class Money implements Valuable {
 
 	protected double value;
 	protected String currency;
 
-	public Money() {
-		super();
-	}
-	
-	public Money(double value,String currency){
+	/**
+	 * Money with given value and currency.
+	 * 
+	 * @param value is the value of money.
+	 * @param currency is the currency of money.
+	 */
+	public Money(double value, String currency) {
 		this.currency = currency;
 		this.value = value;
 	}
@@ -38,29 +42,45 @@ public class Money implements Valuable{
 	}
 
 	/**
-	 * Compare two Coin by value and currency. They are equal if the value and
-	 * currency matches.
+	 * Compare two Valuable by value and currency. They are equal if the value
+	 * and currency matches.
 	 * 
 	 * @param arg is another Object to compare to this one.
 	 * @return true if the value is same and the currency is same, false
 	 *         otherwise.
 	 */
 	public boolean equals(Object arg) {
-		if (arg == null) return false;
-		if ( arg.getClass() != this.getClass() )
-		return false;
+		if (arg == null)
+			return false;
+		if (arg.getClass() != this.getClass())
+			return false;
 		Money other = (Money) arg;
 		if (this.value == other.getValue() && this.currency == other.getCurrency())
 			return true;
 		return false;
-		
+
 	}
-	
-	public static void main (String[]arg){
-		Money coin = new BankNote(100.00, "Bat");
-		Money coin2 = new BankNote(100, "Bat");
-		System.out.println(coin.equals(coin2));
-		
+
+	/**
+	 * If the currency is the same, order values by values If the currency is
+	 * not the same, sort the currency.
+	 * 
+	 * @return < 0 when this value is less than other value, = 0 when this value
+	 *         equals other value and > 0 when this value is more than other
+	 *         value.
+	 */
+	@Override
+	public int compareTo(Valuable other) {
+		if (other == null) {
+			return -1;
+		} else if (this.getCurrency().equals(other.getCurrency())) {
+			if (this.getValue() < other.getValue())
+				return -1;
+			if (this.getValue() > other.getValue())
+				return 1;
+			return 0;
+		} else
+			return this.getCurrency().compareTo(other.getCurrency());
 	}
 
 }
