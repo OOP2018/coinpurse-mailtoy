@@ -8,10 +8,7 @@ import java.util.List;
  * @author Kanchanok Kannee
  *
  */
-public class Coin implements Comparable<Coin>,Valuable {
-	double value;
-	String currency;
-	
+public class Coin extends Money implements Comparable<Coin> {
 	/**
 	 * A coin with given value and currency.
 	 * 
@@ -21,46 +18,7 @@ public class Coin implements Comparable<Coin>,Valuable {
 	 *            is the currency of coin.
 	 */
 	public Coin(double value, String currency){
-		if(value < 0) return;
-		this.value = value;
-		this.currency = currency;
-	}
-	
-	/**
-	 * Return the value of the money.
-	 * 
-	 * @return the value.
-	 */
-	public double getValue(){
-		return this.value;
-	}
-	
-	/**
-	 * Return the currency of the money.
-	 * 
-	 * @return the currency.
-	 */
-	public String getCurrency(){
-		return this.currency;
-	}
-	
-	/**
-	 * Compare two Coin by value and currency. They are equal if the value and
-	 * currency matches.
-	 * 
-	 * @param arg is another Object to compare to this one.
-	 * @return true if the value is same and the currency is same, false
-	 *         otherwise.
-	 */
-	public boolean equals(Object arg){
-		if (arg == null) return false;
-		if ( arg.getClass() != this.getClass() )
-		return false;
-		Coin other = (Coin) arg;
-		if (this.value == other.getValue() && this.currency == other.getCurrency())
-			return true;
-		return false;
-		
+		super(value,currency);
 	}
 	
 	/**
@@ -81,7 +39,7 @@ public class Coin implements Comparable<Coin>,Valuable {
 	 * 
 	 */
 	public String toString(){
-		return String.format("%.2f-%s", value, currency);
+		return String.format("%.2f-%s", getValue(), getCurrency());
 	}
 	
 

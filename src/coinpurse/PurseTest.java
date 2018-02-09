@@ -56,9 +56,9 @@ public class PurseTest {
     public void testInsert()
     {
         Purse purse = new Purse(3);
-        Coin coin1 = makeCoin(5);
-        Coin coin2 = makeCoin(10);
-        Coin coin3 = makeCoin(1);
+        Money coin1 = makeCoin(5);
+        Money coin2 = makeCoin(10);
+        Money coin3 = makeCoin(1);
         assertTrue( purse.insert(coin1));
         assertTrue( purse.insert(coin3));
         assertTrue( purse.insert(coin2));
@@ -73,7 +73,7 @@ public class PurseTest {
     public void testInsertNoValue()
     {
         Purse purse = new Purse(3);
-        Coin fakeCoin = new Coin(0, CURRENCY);
+        Money fakeCoin = new Coin(0, CURRENCY);
         assertFalse( purse.insert(fakeCoin) );
     }
 
@@ -106,7 +106,7 @@ public class PurseTest {
 		int capacity = 5;
 		double value = 10.0;
 		Purse purse = new Purse(capacity);
-		Coin coin = new Coin(value, "THB");
+		Money coin = new Coin(value, "THB");
 		assertTrue( purse.insert(coin) );
 		assertTrue( purse.insert(coin) ); // should be allowed
 		assertTrue( purse.insert(coin) ); // should be allowed
@@ -122,7 +122,7 @@ public class PurseTest {
 		double [] values = {1, 20, 0.5, 10}; // values of coins we will insert
 		
 		for(double value : values) {
-			Coin coin = makeCoin(value);
+			Money coin = makeCoin(value);
 			assertTrue(purse.insert(coin));
 			assertEquals(value,  purse.getBalance(), TOL);
 			Valuable [] result = purse.withdraw(value);
@@ -170,7 +170,7 @@ public class PurseTest {
 		for(int num=1; num <= coins.size(); num++) {
 			double amount = 0.0;
 			List<Coin> subList = coins.subList(0, num);
-			for(Coin c: subList) {
+			for(Money c: subList) {
 				purse.insert(c);
 				amount += c.getValue();
 			}

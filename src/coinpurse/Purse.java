@@ -127,12 +127,11 @@ public class Purse {
 
 		if (amount != 0)
 			return null;
-		if (amount == 0) {
-			for (Valuable coinNeedToWithdraw : withdraw) {
+		
+		for (Valuable coinNeedToWithdraw : withdraw) {
 				money.remove(coinNeedToWithdraw);
 			}
-		}
-
+		
 		Valuable[] arrayWithdraw = new Valuable[withdraw.size()];
 		withdraw.toArray(arrayWithdraw);
 		return arrayWithdraw;
