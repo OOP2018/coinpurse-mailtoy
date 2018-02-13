@@ -31,8 +31,6 @@ public class Purse {
 	public Purse(int capacity) {
 		this.capacity = capacity;
 		money = new ArrayList<Valuable>();
-		
-
 	}
 
 	/**
@@ -97,6 +95,15 @@ public class Purse {
 		return false;
 	}
 	
+	/**
+	 * Withdraw the requested amount of money. Return an array of Valuable
+	 * withdrawn from purse, or return null if cannot withdraw the amount
+	 * requested.
+	 * 
+	 * @param amount is the amount to withdraw
+	 * @return array of Valuable objects for money withdrawn, or null if cannot
+	 *         withdraw requested amount.
+	 */
 	public Valuable[] withdraw(Valuable amount){
 		Comparator<Valuable> comp = new ValueComparator();
 		if(this.getBalance() < 0.0)
@@ -110,7 +117,7 @@ public class Purse {
 		Collections.reverse(money);
 		List<Valuable> withdraw = new ArrayList<>();
 		for (int i = 0; i < money.size(); i++) {
-			if (money.get(i).getValue() <= amountValue && money.get(i).getCurrency().equals(amount.getCurrency())) {
+			if (money.get(i).getValue() <= amountValue && money.get(i).getCurrency().equalsIgnoreCase(amount.getCurrency())) {
 				withdraw.add(money.get(i));
 				amountValue -= money.get(i).getValue();
 			}
@@ -128,7 +135,7 @@ public class Purse {
 	/**
 	 * Withdraw the requested amount of money. Return an array of Valuable
 	 * withdrawn from purse, or return null if cannot withdraw the amount
-	 * requested.
+	 * requested. Withdraw the amount using the default currency ("Baht").
 	 * 
 	 * @param amount is the amount to withdraw
 	 * @return array of Valuable objects for money withdrawn, or null if cannot
@@ -142,7 +149,6 @@ public class Purse {
 			return null;
 		if (amount > this.getBalance())
 			return null;
-
 		Collections.sort(money, comp);
 		Collections.reverse(money);
 		List<Valuable> withdraw = new ArrayList<>();
@@ -163,22 +169,10 @@ public class Purse {
 	}
 
 	/**
-	 * toString returns a string description of the purse contents. It can
-	 * return whatever is a useful description.
+	 * toString returns a string description of the purse contents. 
 	 */
 	public String toString() {
 		return String.format("%d items with value %.2f", money.size(), getBalance());
-	}
-	
-	public static void main(String[] args) {
-		Purse aPurse = new Purse(10);
-		aPurse.insert(new BankNote(20, "b"));
-		aPurse.insert(new BankNote(20, "p"));
-		aPurse.insert(new Coin(10, "b"));
-		aPurse.withdraw(new BankNote(20, "p"));
-		System.out.println(aPurse);
-		
-		
 	}
 
 }

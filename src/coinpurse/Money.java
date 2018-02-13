@@ -19,6 +19,7 @@ public class Money implements Valuable {
 	 * @param currency is the currency of money.
 	 */
 	public Money(double value, String currency) {
+		if(value < 0) throw new IllegalArgumentException("Money must more than 0.");
 		this.currency = currency;
 		this.value = value;
 	}
@@ -55,7 +56,7 @@ public class Money implements Valuable {
 		if (arg.getClass() != this.getClass())
 			return false;
 		Money other = (Money) arg;
-		if (this.value == other.getValue() && this.currency == other.getCurrency())
+		if (this.value == other.getValue() && this.currency.equalsIgnoreCase(other.getCurrency()))
 			return true;
 		return false;
 
@@ -73,7 +74,7 @@ public class Money implements Valuable {
 	public int compareTo(Valuable other) {
 		if (other == null) {
 			return -1;
-		} else if (this.getCurrency().equals(other.getCurrency())) {
+		} else if (this.getCurrency().equalsIgnoreCase(other.getCurrency())) {
 			if (this.getValue() < other.getValue())
 				return -1;
 			if (this.getValue() > other.getValue())
