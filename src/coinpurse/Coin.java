@@ -9,6 +9,8 @@ import java.util.List;
  *
  */
 public class Coin extends Money {
+	private String newCurrency;
+	
 	/**
 	 * A coin with given value and currency.
 	 * 
@@ -21,6 +23,11 @@ public class Coin extends Money {
 		super(value,currency);
 	}
 	
+	public Coin(double value, String currency,String newCurrency){
+		super(value, currency);
+		this.newCurrency = newCurrency;
+	}
+	
 	/**
 	 * Return a string representation of this Coin
 	 * 
@@ -28,7 +35,10 @@ public class Coin extends Money {
 	 * 
 	 */
 	public String toString(){
-		return String.format("%.2f-%s", getValue(), getCurrency());
+		if(value < 1) {
+			return String.format("%.2f-%s coin", getValue() * 100, newCurrency);
+		}
+		return String.format("%.2f-%s coin", getValue(), getCurrency());
 	}
 	
 
