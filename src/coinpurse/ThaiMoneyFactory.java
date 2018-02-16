@@ -2,11 +2,12 @@ package coinpurse;
 
 public class ThaiMoneyFactory extends MoneyFactory {
 
+	protected static long nextSerialNumber = 1000000;
 	private static final String CURRENCY = "Baht";
 	private double[] thaiMoney = { 1, 2, 5, 10, 20, 50, 100, 500, 1000 };
 
 	@Override
-	Valuable createMoney(double value) {
+	public Valuable createMoney(double value) {
 
 		Valuable valuable = null;
 		boolean checkContain = false;
@@ -21,8 +22,8 @@ public class ThaiMoneyFactory extends MoneyFactory {
 
 				if (checkMoney <= 10) {
 					valuable = new Coin(value, CURRENCY);
-				} else if (checkMoney > 10) {
-					valuable = new BankNote(value, CURRENCY, nextSerialNumber++);
+				} else if (checkMoney >= 20) {
+					return valuable = new BankNote(value, CURRENCY, nextSerialNumber++);
 				}
 
 			} else {

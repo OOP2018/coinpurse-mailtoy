@@ -9,7 +9,6 @@ public abstract class MoneyFactory {
 	
 	/** singleton instance of MoneyFactory. */
 	private static MoneyFactory factory;
-	protected long nextSerialNumber = 1000000;
 	
 	public static MoneyFactory getInstance() {
 		if(factory == null) 
