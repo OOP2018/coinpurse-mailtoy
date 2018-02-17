@@ -40,7 +40,7 @@ public class MoneyFactoryDemo {
 	public static void main(String[] args) {
 		MoneyFactory.getInstance().setFactory(new ThaiMoneyFactory());
 		testMoneyFactory();
-		System.out.println("\nThailand is too hot. Moving to Malasia!");
+		System.out.println("\nSwitch to Malaysia!");
 		MoneyFactory.getInstance().setFactory(new MalayMoneyFactory());
 		testMoneyFactory();
 	}

@@ -42,9 +42,9 @@ public class Coin extends Money {
 	 */
 	public String toString(){
 		if(value < 1) {
-			return String.format("%.2f-%s coin", getValue() * 100, newCurrency);
+			return String.format("%.0f-%s coin", getValue() * 100, newCurrency);
 		}
-		return String.format("%.2f-%s coin", getValue(), getCurrency());
+		return String.format("%.0f-%s coin", getValue(), getCurrency());
 	}
 	
 
