@@ -23,6 +23,12 @@ public class Coin extends Money {
 		super(value,currency);
 	}
 	
+	/**
+	 * A coin with given value and currency and specific currency.
+	 * @param value is the value of coin.
+	 * @param currency is the currency of coin.
+	 * @param newCurrency is the specific currency of coin.("Bath" and "Ringgit").
+	 */
 	public Coin(double value, String currency,String newCurrency){
 		super(value, currency);
 		this.newCurrency = newCurrency;

@@ -6,7 +6,7 @@ package coinpurse;
  *
  */
 public class BankNote extends Money {
-//	
+
 //	private static long nextSerialNumber = 1000000;
 	private long serialNumber;
 	/**

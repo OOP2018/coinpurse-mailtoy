@@ -2,7 +2,18 @@ package coinpurse;
 
 import java.util.ResourceBundle;
 
+/**
+ * Read a properties file and create MoneyFactory.
+ * 
+ * @author Kanchanok Kannee
+ *
+ */
 public class ReadFile {
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public static MoneyFactory read(){
 		ResourceBundle bundle = ResourceBundle.getBundle( "purse" );
 		String factoryclass = bundle.getString( "moneyfactory" ); 

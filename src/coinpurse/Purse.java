@@ -86,7 +86,7 @@ public class Purse {
 	 * @return true if value inserted, false if can't insert
 	 */
 	public boolean insert(Valuable value) {
-		if (this.isFull())
+		if (this.isFull() || value == null)
 			return false;
 		if (value.getValue() > 0) {
 			money.add(value);
