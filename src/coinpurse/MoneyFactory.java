@@ -18,7 +18,7 @@ public abstract class MoneyFactory {
 	 */
 	public static MoneyFactory getInstance() {
 		if (factory == null)
-			factory = new Main().init();
+			factory = new FileReader().init();
 		return factory;
 	}
 

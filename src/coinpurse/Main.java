@@ -9,29 +9,6 @@ import java.util.ResourceBundle;
  */
 public class Main {
 	
-	/**
-	 * Read a properties file and create MoneyFactory.
-	 * @return MoneyFactory instance.
-	 */
-	public static MoneyFactory init(){
-		ResourceBundle bundle = ResourceBundle.getBundle("purse");
-		String factoryclass = bundle.getString("moneyfactory");
-		MoneyFactory factory = null;
-		try {
-			factory = (MoneyFactory)Class.forName(factoryclass).newInstance();
-		}
-		catch (ClassCastException cce) {
-			System.out.println(factoryclass + " is not type MoneyFactor");
-		}
-		catch (Exception ex) {
-			System.out.println("Error creating MoneyFactory " + ex.getMessage());
-		}
-		if (factory == null ) 
-			System.exit(1);
-		else 
-			MoneyFactory.setFactory(factory);
-		return factory;
-	}
     /**
      * Configure and start the application.
      * @param args not used
