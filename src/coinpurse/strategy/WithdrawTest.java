@@ -13,6 +13,7 @@ import coinpurse.Coin;
 import coinpurse.Valuable;
 
 /**
+ * WithdrawTest class containing JUnit tests for WithdrawStrategy.
  * 
  * @author Kanchanok Kannee
  *
@@ -34,6 +35,7 @@ public class WithdrawTest {
 		strategy = new GreedyWithdraw();
 	}
 
+	/** Add one coin and remove more than it. */
 	@Test
 	public void testWithdrawImpossible() {
 		Valuable valuable = new Coin(5, CURRENCY);
@@ -42,6 +44,7 @@ public class WithdrawTest {
 		assertNull(strategy.withdraw(valuable2, money));
 	}
 
+	/** Add one coin and remove it. */
 	@Test
 	public void testEasyWithdraw() {
 		Valuable valuable = new Coin(5, CURRENCY);
@@ -60,7 +63,6 @@ public class WithdrawTest {
 		money2.add(valuable);
 		assertEquals(strategy.withdraw(valuable, money), money2);
 		money2.remove(valuable);
-
 	}
 
 	/**
@@ -84,6 +86,7 @@ public class WithdrawTest {
 		assertNull(strategy.withdraw(valuable2, money));
 	}
 
+	/** Withdraw should reject coin with minus value. */
 	@Test(expected = IllegalArgumentException.class)
 	public void testMinusWithdraw() {
 		money2 = (ArrayList<Valuable>) strategy.withdraw(new Coin(-1, "Baht"), money);

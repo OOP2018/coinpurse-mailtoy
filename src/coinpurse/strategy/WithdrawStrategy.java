@@ -5,6 +5,7 @@ import java.util.List;
 import coinpurse.Valuable;
 
 /**
+ * Interface of Withdraw that can implement to create your withdraw style.
  * 
  * @author Kanchanok Kannee
  *

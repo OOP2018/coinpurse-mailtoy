@@ -112,23 +112,12 @@ public class Purse {
 	 *         withdraw requested amount.
 	 */
 	public Valuable[] withdraw(Valuable amount){
-//		Comparator<Valuable> comp = new ValueComparator();
 		if(this.getBalance() < 0.0)
 			return null;
 		if (amount.getValue() < 0)
 			return null;
 		if (amount.getValue() > this.getBalance())
 			return null;
-//		double amountValue = amount.getValue();
-//		Collections.sort(money, comp);
-//		Collections.reverse(money);
-//		List<Valuable> withdraw = new ArrayList<>();
-//		for (int i = 0; i < money.size(); i++) {
-//			if (money.get(i).getValue() <= amountValue && money.get(i).getCurrency().equalsIgnoreCase(amount.getCurrency())) {
-//				withdraw.add(money.get(i));
-//				amountValue -= money.get(i).getValue();
-//			}
-//		}
 		List<Valuable> list = strategy.withdraw(amount, money);
 		
 		if(list == null){

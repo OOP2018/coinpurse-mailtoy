@@ -7,12 +7,17 @@ import coinpurse.MoneyUtil;
 import coinpurse.Valuable;
 
 /**
+ * Withdraw money by using recursive.
  * 
  * @author Kanchanok Kannee
  *
  */
 public class RecursiveWithdraw implements WithdrawStrategy {
 
+	/**
+	 * Find and return items from a collection whose total value equals the
+	 * requested amount by using recursion.
+	 */
 	@Override
 	public List<Valuable> withdraw(Valuable amount, List<Valuable> money) {
 		MoneyUtil.filterByCurrency(money, amount.getCurrency());
@@ -24,7 +29,9 @@ public class RecursiveWithdraw implements WithdrawStrategy {
 	 * going through all the money in the purse.
 	 * 
 	 * @param amount
+	 *            is money that user need to withdraw.
 	 * @param money
+	 *            is values in the purse
 	 * @return
 	 */
 	public List<Valuable> withdrawHelper(double amount, List<Valuable> money) {
